@@ -1,2 +1,2 @@
-0x10. C - Function pointers:WQ
+0x10. C - Function pointers
 
