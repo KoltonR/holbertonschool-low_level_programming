@@ -1,57 +1,48 @@
-#include "variadic_functions.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdarg.h>
-
+#include "variadic_functions.h"
 /**
- * print_all - prints char, string, int, or char
- * @format: what type to print
- *
- *
+ * print_all - prints everything
+ * @format: format of the string to be printed
  */
 
 void print_all(const char * const format, ...)
 {
-int i = 0;
-int space;
-char *string;
+	unsigned int i;
+	va_list args;
+	int flag;
+	char *s;
 
-va_list ap;
-
-va_start(ap, format && format[i])
-
+	va_start(args, format);
+	i = 0;
 	while (format && format[i])
 	{
-		space = 0;
+		flag = 0;
 		switch (format[i])
 		{
-			case 'c':
-				printf("%c", va_arg(ap, int));
-				space = 1;
-				break;
-			case 'i':
-				printf("%d", va_arg(ap, int));
-				space = 1;
-				break;
-			case 'f':
-				printf("%f", va_arg(ap, double));
-				space = 1;
-				break;
-			case 's':
-				string = va_arg(ap, char *);
-				if (string == NULL)
-					string = "(nil)";
-				printf("%s", string);
-				space = 1;
-				break;
-
+		case 'c':
+			printf("%c", va_arg(args, int));
+			flag = 1;
+			break;
+		case 'f':
+			printf("%f", va_arg(args, double));
+			flag = 1;
+			break;
+		case 's':
+			s = va_arg(args, char *);
+			if (s == NULL)
+				s = "(nil)";
+			printf("%s", s);
+			flag = 1;
+			break;
 		}
-		if (space == 1 && format[i + 1])
+		if (flag == 1 && format[i + 1])
 			printf(", ");
 		i++;
-
 	}
-	va_end(ap);
-	printf("\n")
+	printf("\n");
+	va_end(args);
 }
 
