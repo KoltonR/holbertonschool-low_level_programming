@@ -1,17 +1,20 @@
-#include <stdio.h>
+#include "holberton.h"
 
-void _puts_recursion(char *s) {
-    if (*s == '\0') {
-        putchar('\n'); // Print a newline when the end of the string is reached
-        return;
-    }
+/**
+  * _puts_recursion - Print a string followed by a new line
+  * @s: the string to print
+  *
+  * Return: Nothing.
+  */
+void _puts_recursion(char *s)
+{
+	if (*s == '\0')
+	{
+		_putchar('\n');
+		return;
+	}
 
-    putchar(*s); // Print the current character
-    _puts_recursion(s + 1); // Recur with the next character
-}
-
-int main() {
-    char str[] = "Hello, World!";
-    _puts_recursion(str);
-    return 0;
+	_putchar(*s);
+	s++;
+	_puts_recursion(s);
 }
