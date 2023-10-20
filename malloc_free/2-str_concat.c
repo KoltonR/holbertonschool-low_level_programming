@@ -1,9 +1,10 @@
 #include "main.h"
+#include <stdlib.h>
 int _strl(char *s);
 /**
- * str_concat - concatenates two strings
+ *str_concat - concatenates two strings
  *@s1: string1
-  *@s2: string2
+ *@s2: string2
  *Return: pointer should point to a newly allocated space in memory
  *which contains the contents of s1, followed by the contents of s2,
  *and null terminated, if NULL is passed, treat it as an empty string
